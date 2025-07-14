@@ -1,0 +1,25 @@
+name: TNTTag
+version: '1.0-SNAPSHOT'
+main: me.tomqnto.tnttag.TNTTag
+api-version: '1.21'
+prefix: TNTTag
+authors: [ Tomqnto ]
+depend: [ProtocolLib]
+
+commands:
+  join:
+    usage: /<command>
+  games:
+    usage: /<command>
+  leave:
+    usage: /<command>
+  delete_game:
+    usage: /<command>
+  maps:
+    usage: /<command>
+  players:
+    usage: /<command>
+  spectate:
+    usage: /<command>
+  start:
+    usage: /<command>
