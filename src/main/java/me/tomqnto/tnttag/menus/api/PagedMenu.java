@@ -33,7 +33,7 @@ public abstract class PagedMenu extends SimpleMenu {
             final int page = i / safeArea;
             final int slot = i % safeArea;
 
-            setItem(page, slot, buttons[i]);
+            setButton(page, slot, buttons[i]);
         }
     }
 
@@ -44,7 +44,7 @@ public abstract class PagedMenu extends SimpleMenu {
         setNavigation();
     }
 
-    public void setItem(int page, int slot, Button button) {
+    public void setButton(int page, int slot, Button button) {
         final int index = page * getInventory().getSize() + slot;
         getActionsMap().put(index, button.getAction());
         getItemsMap().put(index, button.getItemStack());

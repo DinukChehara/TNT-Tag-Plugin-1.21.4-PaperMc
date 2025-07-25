@@ -1,6 +1,6 @@
 package me.tomqnto.tnttag.commands;
 
-import me.tomqnto.tnttag.Actions;
+import me.tomqnto.tnttag.JoinActions;
 import me.tomqnto.tnttag.TNTTag;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -20,7 +20,7 @@ public class JoinCommand implements CommandExecutor {
             }
 
             if (args.length == 0) {
-                Actions.joinGame(player);
+                JoinActions.joinGame(player);
 
                 return true;
             }
@@ -37,7 +37,7 @@ public class JoinCommand implements CommandExecutor {
 
             if (args[0].equals("id")) {
                 String id = args[1];
-                Actions.joinGameById(player, id);
+                JoinActions.joinGameById(player, id);
                 return true;
 
             } else{
@@ -46,7 +46,7 @@ public class JoinCommand implements CommandExecutor {
                     strBuilder.append(args[x] + " ");
                 String map = strBuilder.toString().stripTrailing();
 
-                Actions.joinGameByMap(player, map);
+                JoinActions.joinGameByMap(player, map);
                 return true;
             }
         } else{

@@ -11,12 +11,13 @@ public class EndGameCountdown extends BukkitRunnable {
         this.game = game;
     }
 
-    int x = 10;
+    int x = 15;
     @Override
     public void run() {
         if (x<=0) {
-            cancel();
             game.delete();
+            cancel();
+            return;
         }
         if (x<6)
             game.broadcast("<red>Game closing in " + x + "s");

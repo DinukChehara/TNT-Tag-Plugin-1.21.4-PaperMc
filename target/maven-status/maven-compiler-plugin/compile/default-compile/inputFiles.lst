@@ -1,4 +1,3 @@
-C:\Users\Dinuk\Desktop\plugin dev\TNTTag\src\main\java\me\tomqnto\tnttag\Actions.java
 C:\Users\Dinuk\Desktop\plugin dev\TNTTag\src\main\java\me\tomqnto\tnttag\commands\DeleteGameCommand.java
 C:\Users\Dinuk\Desktop\plugin dev\TNTTag\src\main\java\me\tomqnto\tnttag\commands\ForceStartCommand.java
 C:\Users\Dinuk\Desktop\plugin dev\TNTTag\src\main\java\me\tomqnto\tnttag\commands\GamesCommand.java
@@ -15,10 +14,11 @@ C:\Users\Dinuk\Desktop\plugin dev\TNTTag\src\main\java\me\tomqnto\tnttag\game\Ga
 C:\Users\Dinuk\Desktop\plugin dev\TNTTag\src\main\java\me\tomqnto\tnttag\game\GameState.java
 C:\Users\Dinuk\Desktop\plugin dev\TNTTag\src\main\java\me\tomqnto\tnttag\game\map\GameMap.java
 C:\Users\Dinuk\Desktop\plugin dev\TNTTag\src\main\java\me\tomqnto\tnttag\game\map\MapConfig.java
+C:\Users\Dinuk\Desktop\plugin dev\TNTTag\src\main\java\me\tomqnto\tnttag\JoinActions.java
 C:\Users\Dinuk\Desktop\plugin dev\TNTTag\src\main\java\me\tomqnto\tnttag\listeners\ChatListener.java
 C:\Users\Dinuk\Desktop\plugin dev\TNTTag\src\main\java\me\tomqnto\tnttag\listeners\DeathListener.java
 C:\Users\Dinuk\Desktop\plugin dev\TNTTag\src\main\java\me\tomqnto\tnttag\listeners\GameStateChangeListener.java
-C:\Users\Dinuk\Desktop\plugin dev\TNTTag\src\main\java\me\tomqnto\tnttag\listeners\PlayerHitListener.java
+C:\Users\Dinuk\Desktop\plugin dev\TNTTag\src\main\java\me\tomqnto\tnttag\listeners\PlayerDamageListener.java
 C:\Users\Dinuk\Desktop\plugin dev\TNTTag\src\main\java\me\tomqnto\tnttag\listeners\PlayerInteractListener.java
 C:\Users\Dinuk\Desktop\plugin dev\TNTTag\src\main\java\me\tomqnto\tnttag\listeners\PlayerLeaveListener.java
 C:\Users\Dinuk\Desktop\plugin dev\TNTTag\src\main\java\me\tomqnto\tnttag\listeners\PlayerTeleportListener.java
@@ -34,5 +34,6 @@ C:\Users\Dinuk\Desktop\plugin dev\TNTTag\src\main\java\me\tomqnto\tnttag\player\
 C:\Users\Dinuk\Desktop\plugin dev\TNTTag\src\main\java\me\tomqnto\tnttag\player\PlayerTempData.java
 C:\Users\Dinuk\Desktop\plugin dev\TNTTag\src\main\java\me\tomqnto\tnttag\tasks\EndGameCountdown.java
 C:\Users\Dinuk\Desktop\plugin dev\TNTTag\src\main\java\me\tomqnto\tnttag\tasks\StartingCountdown.java
-C:\Users\Dinuk\Desktop\plugin dev\TNTTag\src\main\java\me\tomqnto\tnttag\tasks\TNTTask.java
+C:\Users\Dinuk\Desktop\plugin dev\TNTTag\src\main\java\me\tomqnto\tnttag\tasks\TNTTask20Ticks.java
 C:\Users\Dinuk\Desktop\plugin dev\TNTTag\src\main\java\me\tomqnto\tnttag\TNTTag.java
+C:\Users\Dinuk\Desktop\plugin dev\TNTTag\src\main\java\me\tomqnto\tnttag\victorydance\FireworkVictoryDance.java

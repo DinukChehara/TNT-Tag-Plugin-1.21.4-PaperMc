@@ -5,6 +5,8 @@ import me.tomqnto.tnttag.menus.api.Button;
 import me.tomqnto.tnttag.menus.api.PagedMenu;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.format.TextDecoration;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -30,7 +32,10 @@ public class PlayerMenu extends PagedMenu {
             ItemStack skull = new ItemStack(Material.PLAYER_HEAD);
             SkullMeta meta = (SkullMeta) skull.getItemMeta();
 
-            meta.displayName(player.name().color(NamedTextColor.GOLD));
+            if (player==game.getTaggedPlayer())
+                meta.displayName(MiniMessage.miniMessage().deserialize("<red>" + player.getName()).decoration(TextDecoration.ITALIC, false));
+            else
+                meta.displayName(player.name().color(NamedTextColor.YELLOW).decoration(TextDecoration.ITALIC, false));
             
             if (game.getDeadList().contains(player))
                 meta.setLore(List.of("§cDead"));

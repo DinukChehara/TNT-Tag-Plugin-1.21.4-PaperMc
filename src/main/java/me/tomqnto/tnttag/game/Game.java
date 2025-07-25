@@ -6,7 +6,7 @@ import me.tomqnto.tnttag.game.map.GameMap;
 import me.tomqnto.tnttag.menus.PlayerMenu;
 import me.tomqnto.tnttag.tasks.EndGameCountdown;
 import me.tomqnto.tnttag.tasks.StartingCountdown;
-import me.tomqnto.tnttag.tasks.TNTTask;
+import me.tomqnto.tnttag.tasks.TNTTask20Ticks;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
@@ -19,6 +19,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 
+import java.time.Duration;
 import java.util.*;
 
 public class Game implements Listener {
@@ -36,7 +37,7 @@ public class Game implements Listener {
     private final GameManager gameManager;
     private final GameScoreboard gameScoreboard = new GameScoreboard(this);
     private Player taggedPlayer;
-    private final TNTTask tntCountdown = new TNTTask(35, this);
+    private final TNTTask20Ticks TNT20TicksTask = new TNTTask20Ticks(35, this);
 
     public Game(int gameNumber, GameMap map, GameManager gameManager) {
         this.gameNumber = gameNumber;
@@ -159,9 +160,10 @@ public class Game implements Listener {
     public void delete(){
 
         for (Player player : map.getBukkitWorld().getPlayers()){
+            TNTTag.getInstance().getPlayerTempData(player).setGame(null);
             player.getInventory().clear();
             player.setHealth(0);
-            TNTTag.getInstance().getPlayerTempData(player).setGame(null);
+            player.setGameMode(GameMode.SURVIVAL);
         }
 
         playerList.clear();
@@ -201,6 +203,22 @@ public class Game implements Listener {
         }
     }
 
+    public void broadcastTitle(Component title, Component subtitle, Duration fadeIn, Duration stay, Duration fadeOut, boolean clearTitle){
+        for (Player player : playersInGame()){
+            if (clearTitle)
+                player.clearTitle();
+            player.showTitle(Title.title(title, subtitle, Title.Times.times(fadeIn, stay, fadeOut)));
+        }
+    }
+
+    public void broadcastTitle(Component title, Component subtitle, boolean clearTitle){
+        for (Player player : playersInGame()){
+            if (clearTitle)
+                player.clearTitle();
+            player.showTitle(Title.title(title, subtitle));
+        }
+    }
+
     public StartingCountdown getCountdown() {
         return countdown;
     }
@@ -226,10 +244,10 @@ public class Game implements Listener {
     }
 
     public void endGame(){
-        getTntTask().cancel();
+        getTNT20TicksTask().cancel();
         getGameScoreboard().cancel();
-        broadcast("<gold><bold>GAME ENDED");
-        broadcast("<gold><bold>" + getAliveList().getFirst().getName() + " won!");
+        broadcast("<gradient:#ff4e50:#f9d423><bold>\uD83C\uDFC6 GAME OVER \uD83C\uDFC6</bold></gradient><br>"  +
+                  "<gold><bold>" + getAliveList().getFirst().getName() + "</bold></gold> <green>is the last one standing!</green>");
 
         for (Player player : playersInGame()){
             player.clearTitle();
@@ -249,8 +267,7 @@ public class Game implements Listener {
             taggedPlayer.getInventory().setHelmet(null);
         taggedPlayer = player;
         player.clearTitle();
-        player.showTitle(Title.title(Component.text("You have been tagged").color(NamedTextColor.RED).decorate(TextDecoration.BOLD), Component.space()));
-        broadcast( "<gold>" + player.getName() + "<red> was tagged!");
+        broadcast( "<yellow>" + player.getName() + "<red> was tagged!");
     }
 
     public Player getTaggedPlayer() {
@@ -262,7 +279,7 @@ public class Game implements Listener {
         tagPlayer(random);
     }
 
-    public TNTTask getTntTask() {
-        return tntCountdown;
+    public TNTTask20Ticks getTNT20TicksTask() {
+        return TNT20TicksTask;
     }
 }

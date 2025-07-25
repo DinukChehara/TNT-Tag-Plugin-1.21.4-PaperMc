@@ -19,6 +19,10 @@ public class MapConfig {
             TNTTag.getInstance().saveResource("map_data.yml", false);
 
         config = YamlConfiguration.loadConfiguration(file);
+        config.options().setHeader(List.of(
+                "map folder name: <-- this will be the display name too",
+                "           spawn-location = [x,y,z] <-- teleport location when a player joins the game"
+        ));
     }
 
     public static void saveConfig(){

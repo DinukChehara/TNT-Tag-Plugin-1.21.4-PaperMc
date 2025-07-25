@@ -34,9 +34,10 @@ public class DeathListener implements Listener {
                 player.getInventory().clear();
 
                 if (game.getTaggedPlayer() != player)
-                    game.broadcast("<gold>" + player.getName() + " <red>died");
+                    game.broadcast("<yellow>" + player.getName() + " <red>died");
                 else {
-                    game.broadcast("<gold><bold>" + player.getName() + " <red>blew up");
+                    game.getTNT20TicksTask().setTimeLeft(game.getTNT20TicksTask().getCountdown());
+                    game.broadcast("<yellow>" + player.getName() + " <red>blew up");
                 }
 
                 player.showTitle(Title.title(Component.text("You died").color(NamedTextColor.RED).decorate(TextDecoration.BOLD), Component.space(), Title.Times.times(Duration.ofMillis(500), Duration.ofMillis(3000), Duration.ofMillis(300))));

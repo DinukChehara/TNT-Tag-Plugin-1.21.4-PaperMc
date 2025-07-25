@@ -47,7 +47,7 @@ public final class TNTTag extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new GameStateChangeListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerLeaveListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerTeleportListener(), this);
-        getServer().getPluginManager().registerEvents(new PlayerHitListener(), this);
+        getServer().getPluginManager().registerEvents(new PlayerDamageListener(), this);
 
         getCommand("join").setExecutor(new JoinCommand());
         getCommand("games").setExecutor(new GamesCommand());

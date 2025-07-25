@@ -41,9 +41,10 @@ public class GameMap {
             if (bukkitWorld!=null){
                 this.bukkitWorld.setAutoSave(false);
                 bukkitWorld.setGameRule(GameRule.SHOW_DEATH_MESSAGES, false);
+                bukkitWorld.setGameRule(GameRule.DO_MOB_SPAWNING, false);
             }
         } catch (Exception e) {
-            Bukkit.getLogger().severe("Could not load map from source folder");
+            Bukkit.getLogger().severe("Could not load world: " + activeWorldFolder.getName());
             e.printStackTrace();
 
             System.out.println(sourceWorldFolder);
@@ -61,19 +62,15 @@ public class GameMap {
             try {
                 FileUtils.deleteDirectory(activeWorldFolder);
                 TNTTag.getInstance().gameMaps.remove(this);
+                Bukkit.getLogger().info("Deleted active world: " + activeWorldFolder.getName());
             } catch (IOException e) {
-                Bukkit.getLogger().severe("Could not delete active map");
+                Bukkit.getLogger().severe("Could not delete active world: " + activeWorldFolder.getName());
                 e.printStackTrace();
             }
         }
 
         bukkitWorld = null;
         activeWorldFolder = null;
-    }
-
-    public boolean resetWorld(){
-        unload();
-        return load();
     }
 
     private boolean isLoaded() {

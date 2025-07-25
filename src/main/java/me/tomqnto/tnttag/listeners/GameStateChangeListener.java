@@ -4,9 +4,10 @@ import me.tomqnto.tnttag.TNTTag;
 import me.tomqnto.tnttag.events.GameStateChangeEvent;
 import me.tomqnto.tnttag.game.Game;
 import me.tomqnto.tnttag.game.GameState;
+import me.tomqnto.tnttag.victorydance.FireworkVictoryDance;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
-import net.kyori.adventure.title.Title;
+import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -25,21 +26,20 @@ public class GameStateChangeListener implements Listener {
 
         if (state == GameState.WAITING && previousState == GameState.STARTING){
             game.broadcast("<gray>Not enough players to start");
-            for (Player player : players){
-                player.clearTitle();
-                player.showTitle(Title.title(Component.text("Not enough players to start").color(NamedTextColor.GRAY), Component.space()));
-                player.getInventory().clear();
-            }
+            game.broadcastTitle(Component.text("Not enough players to start").color(NamedTextColor.GRAY), Component.space(), true);
         }
 
         if (state == GameState.STARTED) {
+            game.getTNT20TicksTask().runTaskTimer(TNTTag.getInstance(), 0, 20);
             game.getGameMap().getBukkitWorld().setPVP(true);
             game.broadcast("<yellow>Game started!");
             game.tagRandomly();
-            game.getTntTask().runTaskTimer(TNTTag.getInstance(), 0, 20);
+            game.broadcastTitle(Component.text(game.getTaggedPlayer().getName()).color(NamedTextColor.YELLOW).decorate(TextDecoration.BOLD), Component.text("was tagged!").color(NamedTextColor.RED), true);
         }
 
         if (state == GameState.ENDED){
+            FireworkVictoryDance dance = new FireworkVictoryDance(game);
+            dance.runTaskTimer(TNTTag.getInstance(), 0, 20);
             game.getGameMap().getBukkitWorld().setPVP(false);
         }
 

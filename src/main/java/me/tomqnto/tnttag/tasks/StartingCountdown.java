@@ -39,9 +39,7 @@ public class StartingCountdown extends BukkitRunnable {
         }
 
         if (time==20 || time == 15 || time <= 10 ){
-            for (Player player : game.getPlayerList()){
-                player.showTitle(Title.title(title, Component.space(), Title.Times.times(Duration.ofMillis(100),Duration.ofMillis(1000), Duration.ofMillis(100))));
-            }
+            game.broadcastTitle(title, Component.space(), Duration.ofMillis(100), Duration.ofMillis(1000), Duration.ofMillis(100), true);
         }
 
         time--;

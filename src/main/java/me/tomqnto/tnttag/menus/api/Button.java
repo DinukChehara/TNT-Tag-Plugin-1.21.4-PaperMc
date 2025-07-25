@@ -15,14 +15,8 @@ public class Button extends ItemStack implements Listener {
     public Button(ItemStack itemStack, Consumer<Player> action) {
         this.itemStack = itemStack;
         this.action = action;
-        TNTTag.getInstance().getServer().getPluginManager().registerEvents(this, TNTTag.getInstance());
     }
 
-//    @EventHandler
-//    public void onClick(InventoryClickEvent event){
-//        if (Objects.requireNonNull(event.getClickedInventory()).getItem(event.getSlot()) instanceof Button)
-//            action.accept((Player) event.getWhoClicked());
-//    }
 
     public ItemStack getItemStack() {
         return itemStack;
